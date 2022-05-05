@@ -107,7 +107,7 @@ class WeatherList {
   double? gust;
   int? clouds;
   double? pop;
-  double? rain;
+  num? rain;
 
   WeatherList(
       {this.dt,
