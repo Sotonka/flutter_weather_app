@@ -10,10 +10,10 @@ class CityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var forecastList = snapshot.data?.list;
-    var city = snapshot.data?.city?.name;
-    var country = snapshot.data?.city?.country;
+    var city = snapshot.data?.city.name;
+    var country = snapshot.data?.city.country;
     var formattedDate =
-        DateTime.fromMillisecondsSinceEpoch(forecastList![0].dt! * 1000);
+        DateTime.fromMillisecondsSinceEpoch(forecastList![0].dt * 1000);
     return Container(
       child: Column(
         children: <Widget>[
