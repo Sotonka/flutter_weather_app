@@ -3,6 +3,7 @@ import 'package:flutter_weather_app/api/weather_api.dart';
 import 'package:flutter_weather_app/models/weather_forecast_daily.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_weather_app/widgets/city_view.dart';
 
 class WeatherForecastScreen extends StatefulWidget {
   const WeatherForecastScreen({Key? key}) : super(key: key);
@@ -20,9 +21,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
     super.initState();
     forecastObject = WeatherApi().fetchWeatherForecast(cityName: _cityName);
 
-    forecastObject.then((weather) {
-      print(weather.list![0].weather![0].main);
-    });
+    //forecastObject.then((weather) {
+    //print(weather.list![0].weather![0].main);
+    //});
   }
 
   @override
@@ -50,9 +51,13 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
               future: forecastObject,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Text(
-                    'OK',
-                    style: Theme.of(context).textTheme.headline1,
+                  return Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 50.0,
+                      ),
+                      CityView(snapshot: snapshot),
+                    ],
                   );
                 } else {
                   return const Center(
