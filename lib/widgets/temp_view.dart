@@ -15,7 +15,7 @@ class TempView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.network(icon!, scale: 0.4, color: Colors.black87),
+        Image.network(icon!, scale: 0.7, color: Colors.black87),
         const SizedBox(width: 20.0),
         Column(
           children: <Widget>[
