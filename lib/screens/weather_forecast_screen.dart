@@ -51,9 +51,11 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                 return CityScreen();
               }));
               if (tappedName != null) {
-                _cityName = tappedName;
-                forecastObject =
-                    WeatherApi().fetchWeatherForecast(cityName: _cityName);
+                setState(() {
+                  _cityName = tappedName;
+                  forecastObject =
+                      WeatherApi().fetchWeatherForecast(cityName: _cityName);
+                });
               }
             },
           ),
