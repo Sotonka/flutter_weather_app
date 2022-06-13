@@ -14,14 +14,16 @@ class GetWeatherForecast
   @override
   Future<Either<Failure, WeatherForecastEntity>> call(
       WeatherForecastParams params) async {
-    return await weatherForecastRepository.getWeatherForecast(params.days);
+    return await weatherForecastRepository.getWeatherForecast(
+        params.days, params.city);
   }
 }
 
 class WeatherForecastParams extends Equatable {
   final int days;
-  const WeatherForecastParams({required this.days});
+  final String city;
+  const WeatherForecastParams({required this.days, required this.city});
 
   @override
-  List<Object?> get props => [days];
+  List<Object?> get props => [days, city];
 }

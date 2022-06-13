@@ -16,9 +16,9 @@ class WeatherForecastRepositoryImpl implements WeatherForecastRepository {
 
   @override
   Future<Either<Failure, WeatherForecastEntity>> getWeatherForecast(
-      int days) async {
+      int days, String city) async {
     return await _getWeatherForecast(() {
-      return weatherForecastDataSource.getWeatherForecast(days);
+      return weatherForecastDataSource.getWeatherForecast(days, city);
     });
   }
 

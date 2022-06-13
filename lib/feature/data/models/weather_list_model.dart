@@ -10,10 +10,8 @@ class WeatherListModel extends WeatherListEntity {
 
   factory WeatherListModel.fromJson(List<dynamic> json) {
     List<DailyWeatherModel> dailyList = [];
-    //dailyList[0] = json[0];
-    //dailyList[1] = json[1];
+
     return WeatherListModel(
-      // json[0] это короче весь словарь 0 - dailyweather
       main: json,
     );
   }
