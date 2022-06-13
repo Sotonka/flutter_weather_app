@@ -1,25 +1,26 @@
-import 'package:flutter_weather_app/feature/data/models/feels_like_model.dart';
-import 'package:flutter_weather_app/feature/data/models/temp_model.dart';
-import 'package:flutter_weather_app/feature/data/models/weather_model.dart';
-import 'package:flutter_weather_app/feature/domain/entities/weather_list_entity.dart';
+import 'package:flutter_weather_app/feature/data/models/daily_weather_model.dart';
+import 'package:flutter_weather_app/feature/domain/entities/weather_list.dart';
 
 class WeatherListModel extends WeatherListEntity {
   WeatherListModel({
-    dt,
+    main,
   }) : super(
-          dt: dt,
+          main: main,
         );
 
-  factory WeatherListModel.fromJson(Map<String, dynamic> json) {
-    // factory WeatherListModel.fromJson(List<dynamic> json) {
+  factory WeatherListModel.fromJson(List<dynamic> json) {
+    List<DailyWeatherModel> dailyList = [];
+    //dailyList[0] = json[0];
+    //dailyList[1] = json[1];
     return WeatherListModel(
-      dt: json['dt'] as int,
+      // json[0] это короче весь словарь 0 - dailyweather
+      main: json,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'dt': dt,
+      'list': main,
     };
   }
 }
