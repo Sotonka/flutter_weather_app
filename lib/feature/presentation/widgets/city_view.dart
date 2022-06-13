@@ -26,8 +26,25 @@ class CityView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('${city.name}, ${city.country}'),
-              Text(Util.getFormattedDate(formattedDate)),
+              Text(
+                '${city.name}',
+                style: TextStyle(
+                  color: AppColors.dark,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28.0,
+                ),
+              ),
+              /* Text(
+                Util.getFormattedDate(formattedDate),
+                style: TextStyle(color: AppColors.dark),
+              ), */
+              Text(
+                '${weather.weather.main}',
+                style: TextStyle(
+                  color: AppColors.dark,
+                  fontSize: 16.0,
+                ),
+              ),
             ],
           ),
         ],

@@ -9,19 +9,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.dark,
-        title: const Text('openwethermap.org'),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.my_location),
-          color: AppColors.light,
-          onPressed: () {},
+        backgroundColor: Colors.white,
+        title: const Text(
+          '',
+          style: TextStyle(color: AppColors.dark),
         ),
+        elevation: 0.0,
+        centerTitle: true,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.my_location),
+            color: AppColors.dark,
+            onPressed: () {},
+          ),
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.location_city),
-            color: AppColors.light,
+            color: AppColors.dark,
           ),
         ],
       ),

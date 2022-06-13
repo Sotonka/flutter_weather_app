@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           theme: ThemeData.dark().copyWith(
-            backgroundColor: Colors.black,
-            scaffoldBackgroundColor: Colors.black,
+            backgroundColor: Colors.white,
+            scaffoldBackgroundColor: Colors.white,
           ),
           home: HomePage(),
         ));
