@@ -4,6 +4,7 @@ import 'package:flutter_weather_app/feature/domain/entities/city_entity.dart';
 import 'package:flutter_weather_app/feature/domain/entities/daily_weather.dart';
 import 'package:flutter_weather_app/feature/presentation/bloc/weather_forecast_cubit.dart';
 import 'package:flutter_weather_app/feature/presentation/bloc/weather_forecast_state.dart';
+import 'package:flutter_weather_app/feature/presentation/widgets/bottom_scroll_view.dart';
 import 'package:flutter_weather_app/feature/presentation/widgets/city_view.dart';
 import 'package:flutter_weather_app/feature/presentation/widgets/current_weather_view.dart';
 
@@ -19,12 +20,17 @@ class WidgetList extends StatelessWidget {
       CityEntity? city;
       DailyWeatherEntity? daily;
       WeatherListEntity? all;
+      late List<DailyWeatherEntity> weekForecast;
 
       if (state is WeatherForecastLoading) {
         return _loadingIndicator();
       } else if (state is WeatherForecastLoaded) {
         city = state.weather.city;
         all = state.weather.list;
+        weekForecast = [];
+        for (var i = 1; i <= 6; i++) {
+          weekForecast.add(all.main[i]);
+        }
       }
       if (city != null) {
         return Column(
@@ -34,6 +40,10 @@ class WidgetList extends StatelessWidget {
               height: 150.0,
             ),
             CurrentWeatherView(weather: all.main[0]),
+            const SizedBox(
+              height: 150.0,
+            ),
+            BottomScrollView(list: weekForecast),
           ],
         );
       } else {
