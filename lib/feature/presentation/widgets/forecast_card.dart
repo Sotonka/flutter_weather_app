@@ -17,7 +17,7 @@ Widget forecastCard(DailyWeatherEntity weather) {
       ),
       Image.network('${Constants.PATH_ICON}${weather.weather.icon}.png'),
       Text(
-        '${weather.temp.toDouble().round()}°',
+        ' ${weather.temp.toDouble().round()}°',
         style: TextStyle(
           color: AppColors.dark,
           fontWeight: FontWeight.bold,

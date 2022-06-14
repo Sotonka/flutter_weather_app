@@ -18,7 +18,6 @@ class WidgetList extends StatelessWidget {
     return BlocBuilder<WeatherForecastCubit, WeatherForecastState>(
         builder: (context, state) {
       CityEntity? city;
-      DailyWeatherEntity? daily;
       WeatherListEntity? all;
       late List<DailyWeatherEntity> weekForecast;
 
@@ -31,6 +30,11 @@ class WidgetList extends StatelessWidget {
         for (var i = 1; i <= 6; i++) {
           weekForecast.add(all.main[i]);
         }
+      } else if (state is WeatherForecastError) {
+        return Text(
+          state.message,
+          style: TextStyle(color: Colors.red, fontSize: 50),
+        );
       }
       if (city != null) {
         return Column(
@@ -47,7 +51,7 @@ class WidgetList extends StatelessWidget {
           ],
         );
       } else {
-        return Container();
+        return _loadingIndicator();
       }
     });
   }

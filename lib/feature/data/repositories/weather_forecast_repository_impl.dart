@@ -32,12 +32,8 @@ class WeatherForecastRepositoryImpl implements WeatherForecastRepository {
         return Left(ServerFailure());
       }
     } else {
-      try {
-        final remoteForecast = await getForecast();
-        return Right(remoteForecast);
-      } on ServerException {
-        return Left(ServerFailure());
-      }
+      // можно сделать отдельно no connection
+      return Left(ServerFailure());
     }
   }
 }

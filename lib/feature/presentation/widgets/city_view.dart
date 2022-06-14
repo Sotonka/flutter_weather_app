@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/feature/domain/entities/city_entity.dart';
 import 'package:flutter_weather_app/feature/domain/entities/daily_weather.dart';
 import 'package:flutter_weather_app/utilities/app_colors.dart';
-import 'package:flutter_weather_app/utilities/date_formatter.dart';
 
 class CityView extends StatelessWidget {
   final CityEntity city;

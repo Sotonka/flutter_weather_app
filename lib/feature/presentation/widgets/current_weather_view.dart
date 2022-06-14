@@ -20,7 +20,7 @@ class CurrentWeatherView extends StatelessWidget {
         ),
         Image.network('${Constants.PATH_ICON}${weather.weather.icon}@2x.png'),
         Text(
-          '${weather.temp.toDouble().round()}°',
+          ' ${weather.temp.toDouble().round()}°',
           style: TextStyle(
             color: AppColors.dark,
             fontWeight: FontWeight.bold,
