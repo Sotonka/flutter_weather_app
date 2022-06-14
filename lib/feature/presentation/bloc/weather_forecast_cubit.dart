@@ -26,7 +26,8 @@ class WeatherForecastCubit extends Cubit<WeatherForecastState> {
         await getWeather(const WeatherForecastParams(days: 10, city: 'London'));
 
     failureOrWeather.fold(
-        (error) => WeatherForecastError(message: _mapFailureToMessage(error)),
+        (error) =>
+            emit(WeatherForecastError(message: _mapFailureToMessage(error))),
         (result) {
       emit(WeatherForecastLoaded(result));
     });

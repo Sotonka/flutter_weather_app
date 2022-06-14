@@ -4,6 +4,7 @@ import 'package:flutter_weather_app/feature/presentation/bloc/weather_forecast_c
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 import 'core/platform/netwotk_info.dart';
 import 'feature/data/datasources/weather_forecast_data_source.dart';
@@ -23,8 +24,11 @@ Future<void> init() async {
       WeatherForecastRepositoryImpl(
           weatherForecastDataSource: sl(), networkInfo: sl()));
 
+/*   sl.registerLazySingleton<WeatherForecastDataSource>(
+      () => WeatherForecastDataSourceImpl(client: http.Client())); */
+
   sl.registerLazySingleton<WeatherForecastDataSource>(
-      () => WeatherForecastDataSourceImpl(client: http.Client()));
+      () => WeatherForecastDataSourceImpl(dio: Dio()));
 
   // Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
