@@ -33,7 +33,7 @@ class WeatherForecastRepositoryImpl implements WeatherForecastRepository {
       }
     } else {
       // можно сделать отдельно no connection
-      return Left(ServerFailure());
+      return Left(ConnectionFailure());
     }
   }
 }

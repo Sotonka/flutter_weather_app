@@ -6,6 +6,7 @@ import 'package:flutter_weather_app/feature/domain/usecases/get_weather_forecast
 import 'package:flutter_weather_app/feature/presentation/bloc/weather_forecast_state.dart';
 
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
+const CONNECTION_FAILURE_MESSAGE = 'No Connection';
 
 class WeatherForecastCubit extends Cubit<WeatherForecastState> {
   // юзкейс
@@ -37,6 +38,9 @@ class WeatherForecastCubit extends Cubit<WeatherForecastState> {
     switch (failure.runtimeType) {
       case ServerFailure:
         return SERVER_FAILURE_MESSAGE;
+      case ConnectionFailure:
+        return CONNECTION_FAILURE_MESSAGE;
+
       default:
         return 'Unexpected Error';
     }
