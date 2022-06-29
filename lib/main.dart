@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather_app/bloc_observable.dart';
+import 'package:flutter_weather_app/ui/pages/weather_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  BlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: WeatherBlocObservable(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +25,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Rick and Morty',
+      title: '',
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.black,
@@ -38,7 +44,7 @@ class App extends StatelessWidget {
               fontSize: 11.0, fontWeight: FontWeight.w100, color: Colors.grey),
         ),
       ),
-      home: HomePage(title: 'Rick and Morty'),
+      home: HomePage(),
     );
   }
 }

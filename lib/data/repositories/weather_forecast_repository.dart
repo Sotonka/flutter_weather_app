@@ -4,7 +4,7 @@ import 'package:flutter_weather_app/utilities/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 
-class CharacterRepo {
+class WeatherForecastRepository {
   Future<WeatherData> getWeatherData(int days, String city) async {
     try {
       var response = await http.get(Uri.parse(
