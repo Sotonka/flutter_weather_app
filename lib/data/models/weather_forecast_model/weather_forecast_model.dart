@@ -6,7 +6,7 @@ part 'weather_forecast_model.g.dart';
 @freezed
 class WeatherForecast with _$WeatherForecast {
   const factory WeatherForecast({
-    required String dt,
+    required int dt,
     required String dt_txt,
     required Main main,
     required List<Weather> weather,

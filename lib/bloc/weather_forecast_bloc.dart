@@ -17,7 +17,7 @@ class WeatherForecastBloc
       emit(const WeatherForecastState.loading());
       try {
         WeatherData _weatherForecastLoaded = await weatherForecastRepository
-            .getWeatherData(event.days, event.city)
+            .getWeatherData(event.city, event.days)
             .timeout(const Duration(seconds: 5));
         emit(WeatherForecastState.loaded(
             weatherForecastLoaded: _weatherForecastLoaded));

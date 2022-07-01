@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/feature/presentation/widgets/forecast_card.dart';
+import 'package:flutter_weather_app/ui/widgets/forecast_card.dart';
 
 class BottomScrollView extends StatelessWidget {
   final List<dynamic> list;
@@ -10,11 +10,11 @@ class BottomScrollView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 150.0,
-      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),

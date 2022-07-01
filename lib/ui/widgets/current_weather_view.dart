@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/feature/domain/entities/daily_weather.dart';
+import 'package:flutter_weather_app/data/models/weather_forecast_model/weather_forecast_model.dart';
 import 'package:flutter_weather_app/utilities/app_colors.dart';
 import 'package:flutter_weather_app/utilities/constants.dart';
 
 class CurrentWeatherView extends StatelessWidget {
-  final DailyWeatherEntity weather;
+  final WeatherForecast weather;
   const CurrentWeatherView({Key? key, required this.weather}) : super(key: key);
 
   @override
@@ -18,10 +18,11 @@ class CurrentWeatherView extends StatelessWidget {
             fontSize: 16.0,
           ),
         ),
-        Image.network('${Constants.PATH_ICON}${weather.weather.icon}@2x.png'),
+        Image.network(
+            '${Constants.PATH_ICON}${weather.weather[0].icon}@2x.png'),
         Text(
-          ' ${weather.temp.toDouble().round()}°',
-          style: TextStyle(
+          ' ${weather.main.temp.round()}°',
+          style: const TextStyle(
             color: AppColors.dark,
             fontWeight: FontWeight.bold,
             fontSize: 54.0,

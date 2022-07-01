@@ -20,7 +20,7 @@ WeatherForecast _$WeatherForecastFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherForecast {
-  String get dt => throw _privateConstructorUsedError;
+  int get dt => throw _privateConstructorUsedError;
   String get dt_txt => throw _privateConstructorUsedError;
   Main get main => throw _privateConstructorUsedError;
   List<Weather> get weather => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $WeatherForecastCopyWith<$Res> {
           WeatherForecast value, $Res Function(WeatherForecast) then) =
       _$WeatherForecastCopyWithImpl<$Res>;
   $Res call(
-      {String dt, String dt_txt, Main main, List<Weather> weather, Wind wind});
+      {int dt, String dt_txt, Main main, List<Weather> weather, Wind wind});
 
   $MainCopyWith<$Res> get main;
   $WindCopyWith<$Res> get wind;
@@ -65,7 +65,7 @@ class _$WeatherForecastCopyWithImpl<$Res>
       dt: dt == freezed
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       dt_txt: dt_txt == freezed
           ? _value.dt_txt
           : dt_txt // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ abstract class _$$_WeatherForecastCopyWith<$Res>
       __$$_WeatherForecastCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String dt, String dt_txt, Main main, List<Weather> weather, Wind wind});
+      {int dt, String dt_txt, Main main, List<Weather> weather, Wind wind});
 
   @override
   $MainCopyWith<$Res> get main;
@@ -139,7 +139,7 @@ class __$$_WeatherForecastCopyWithImpl<$Res>
       dt: dt == freezed
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       dt_txt: dt_txt == freezed
           ? _value.dt_txt
           : dt_txt // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ class _$_WeatherForecast implements _WeatherForecast {
       _$$_WeatherForecastFromJson(json);
 
   @override
-  final String dt;
+  final int dt;
   @override
   final String dt_txt;
   @override
@@ -230,7 +230,7 @@ class _$_WeatherForecast implements _WeatherForecast {
 
 abstract class _WeatherForecast implements WeatherForecast {
   const factory _WeatherForecast(
-      {required final String dt,
+      {required final int dt,
       required final String dt_txt,
       required final Main main,
       required final List<Weather> weather,
@@ -240,7 +240,7 @@ abstract class _WeatherForecast implements WeatherForecast {
       _$_WeatherForecast.fromJson;
 
   @override
-  String get dt => throw _privateConstructorUsedError;
+  int get dt => throw _privateConstructorUsedError;
   @override
   String get dt_txt => throw _privateConstructorUsedError;
   @override
