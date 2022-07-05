@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/ui/theme/app_colors.dart';
+import 'package:flutter_weather_app/ui/theme/text_styles.dart';
 
 enum AppTheme {
   LightTheme,
@@ -17,6 +18,7 @@ final appThemeData = {
     ),
     brightness: Brightness.light,
     primaryColor: Colors.white,
+    textTheme: lightTextTheme,
   ),
   AppTheme.DarkTheme: ThemeData(
     scaffoldBackgroundColor: Colors.black54,
@@ -28,5 +30,6 @@ final appThemeData = {
     ),
     brightness: Brightness.dark,
     primaryColor: Colors.black54,
+    textTheme: darkTextTheme,
   ),
 };

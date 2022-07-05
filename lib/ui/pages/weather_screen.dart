@@ -1,51 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather_app/bloc/theme_bloc/theme_bloc.dart';
 import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
+import 'package:flutter_weather_app/data/repositories/local_settings_repository.dart';
 import 'package:flutter_weather_app/ui/pages/city_page.dart';
 import 'package:flutter_weather_app/ui/pages/weather_data_page.dart';
-import 'package:flutter_weather_app/ui/theme/app_colors.dart';
+import 'package:flutter_weather_app/ui/theme/theme_data.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool isFirstFetch = true;
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.my_location),
-          color: AppColors.dark,
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              var tappedName = await Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                return CityScreen();
-              }));
-              if (tappedName['cityName'] != null) {
-                context.read<WeatherForecastBloc>().add(
-                    WeatherForecastEvent.fetch(
-                        city: tappedName['cityName'], days: 7));
-              }
-            },
-            icon: const Icon(Icons.location_city),
-            color: AppColors.dark,
-          )
-        ],
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          '',
-          style: Theme.of(context).textTheme.headline3,
-        ),
-      ),
-      body: Container(
-          decoration: const BoxDecoration(color: Colors.white),
-          child: const WeatherDataPage()),
+    return BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
+        late AppTheme currentTheme;
+
+        return MaterialApp(
+          theme: state.themeData,
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                onPressed: () {
+                  if (state.themeData == appThemeData[AppTheme.LightTheme]) {
+                    currentTheme = AppTheme.values[1];
+                    ThemeDatabaseService.putThemeSettings(1);
+                  } else {
+                    currentTheme = AppTheme.values[0];
+                    ThemeDatabaseService.putThemeSettings(0);
+                  }
+
+                  context
+                      .read<ThemeBloc>()
+                      .add(ThemeChanged(theme: currentTheme));
+                },
+                icon: state.themeData == appThemeData[AppTheme.LightTheme]
+                    ? const Icon(Icons.sunny)
+                    : const Icon(Icons.mode_night),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () async {
+                    var tappedName = await Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return Theme(
+                          data: state.themeData, child: const CityScreen());
+                    }));
+
+                    if (tappedName != null) {
+                      context.read<WeatherForecastBloc>().add(
+                          WeatherForecastEvent.fetch(
+                              city: tappedName['cityName'], days: 7));
+                    }
+                  },
+                  icon: const Icon(Icons.location_city),
+                ),
+              ],
+            ),
+            body: Container(
+              child: const WeatherDataPage(),
+            ),
+          ),
+        );
+      }),
     );
   }
 }

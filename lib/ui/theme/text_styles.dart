@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/ui/theme/app_colors.dart';
 
-const _textRegular =
-    TextStyle(fontWeight: FontWeight.normal, color: AppColors.dark);
-const _textBold = TextStyle(fontWeight: FontWeight.bold, color: AppColors.dark);
-
 class AppTypography {
-  static final TextStyle textTempMain = _textBold.copyWith(fontSize: 54);
-  static final TextStyle textTempDaily = _textBold.copyWith(fontSize: 24);
-  static final TextStyle headlineCity = _textBold.copyWith(fontSize: 28);
-  static final TextStyle hint =
-      _textBold.copyWith(fontSize: 28, color: AppColors.red);
-  static final TextStyle textRegular16 = _textRegular.copyWith(fontSize: 16);
+  static const TextStyle textTempMain =
+      TextStyle(fontSize: 54, fontWeight: FontWeight.bold);
+  static const TextStyle textTempDaily =
+      TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
+  static const TextStyle headlineCity =
+      TextStyle(fontSize: 28, fontWeight: FontWeight.bold);
+  static const TextStyle textRegular16 =
+      TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
 }
+
+TextTheme lightTextTheme = TextTheme(
+  headline1: AppTypography.headlineCity.apply(color: AppColors.dark),
+  headline2: AppTypography.textTempMain.apply(color: AppColors.dark),
+  headline3: AppTypography.textTempDaily.apply(color: AppColors.dark),
+  headline4: AppTypography.headlineCity.apply(color: AppColors.red),
+  bodyText1: AppTypography.textRegular16.apply(color: AppColors.dark),
+);
+
+TextTheme darkTextTheme = TextTheme(
+  headline1: AppTypography.headlineCity.apply(color: AppColors.light),
+  headline2: AppTypography.textTempMain.apply(color: AppColors.light),
+  headline3: AppTypography.textTempDaily.apply(color: AppColors.light),
+  headline4: AppTypography.headlineCity.apply(color: AppColors.red),
+  bodyText1: AppTypography.textRegular16.apply(color: AppColors.light),
+);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
-import 'package:flutter_weather_app/ui/theme/text_styles.dart';
+import 'package:flutter_weather_app/data/repositories/local_city_repository.dart';
 import 'package:flutter_weather_app/ui/widgets/weather_list_view.dart';
 import 'package:flutter_weather_app/ui/theme/app_colors.dart';
 
@@ -16,8 +16,10 @@ class _WeatherDataPageState extends State<WeatherDataPage> {
   @override
   void initState() {
     super.initState();
-    //context.read<WeatherForecastBloc>();
-    //.add(const WeatherForecastEvent.fetch(city: 'Khabarovsk', days: 7));
+    if (CityDatabaseService.getCitySettings() != '') {
+      context.read<WeatherForecastBloc>().add(WeatherForecastEvent.fetch(
+          city: CityDatabaseService.getCitySettings(), days: 7));
+    }
   }
 
   @override
@@ -38,14 +40,17 @@ class _WeatherDataPageState extends State<WeatherDataPage> {
               ),
             );
           }, loaded: (weatherLoaded) {
+            CityDatabaseService.putCitySettings(weatherLoaded.city.name);
             return weatherListView(weatherLoaded);
           }, error: () {
             return Center(
-              child: Text('Error Fetching Data', style: AppTypography.hint),
+              child: Text('Error Fetching Data',
+                  style: Theme.of(context).textTheme.headline4),
             );
           }, initial: () {
             return Center(
-              child: Text('Enter City', style: AppTypography.hint),
+              child: Text('Enter City',
+                  style: Theme.of(context).textTheme.headline4),
             );
           }),
         )

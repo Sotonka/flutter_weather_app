@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
 import 'package:flutter_weather_app/bloc_observable.dart';
+import 'package:flutter_weather_app/data/repositories/local_city_repository.dart';
+import 'package:flutter_weather_app/data/repositories/local_settings_repository.dart';
 import 'package:flutter_weather_app/data/repositories/weather_forecast_repository.dart';
 import 'package:flutter_weather_app/ui/pages/weather_screen.dart';
+import 'package:flutter_weather_app/ui/theme/theme_data.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ThemeDatabaseService.checkDatabaseExists();
+  await CityDatabaseService.checkDatabaseExists();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
     blocObserver: WeatherBlocObservable(),
@@ -29,12 +35,14 @@ class App extends StatelessWidget {
     final repository = WeatherForecastRepository();
     return MultiBlocProvider(
         providers: [
-          BlocProvider(
+          BlocProvider<WeatherForecastBloc>(
               create: (context) =>
-                  WeatherForecastBloc(weatherForecastRepository: repository))
+                  WeatherForecastBloc(weatherForecastRepository: repository)),
         ],
         child: MaterialApp(
-          home: HomePage(),
+          debugShowCheckedModeBanner: false,
+          theme: appThemeData[AppTheme.LightTheme],
+          home: const HomePage(),
         ));
   }
 }

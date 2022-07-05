@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/ui/theme/app_colors.dart';
-import 'package:flutter_weather_app/ui/theme/text_styles.dart';
 
 class CityScreen extends StatefulWidget {
   const CityScreen({Key? key}) : super(key: key);
@@ -35,7 +34,6 @@ class _CityScreenState extends State<CityScreen> {
                       borderSide: BorderSide.none),
                   icon: Icon(
                     Icons.location_city,
-                    color: AppColors.dark,
                     size: 50.0,
                   ),
                 ),
@@ -47,7 +45,7 @@ class _CityScreenState extends State<CityScreen> {
             TextButton(
               child: Text(
                 'Get Weather',
-                style: AppTypography.hint,
+                style: Theme.of(context).textTheme.headline4,
               ),
               onPressed: () {
                 cityName ??= '';

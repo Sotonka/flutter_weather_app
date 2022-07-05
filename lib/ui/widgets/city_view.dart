@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/data/models/city_model/city_model.dart';
 import 'package:flutter_weather_app/data/models/weather_forecast_model/weather_forecast_model.dart';
-import 'package:flutter_weather_app/ui/theme/app_colors.dart';
-import 'package:flutter_weather_app/ui/theme/text_styles.dart';
 
 class CityView extends StatelessWidget {
   final City city;
@@ -27,11 +25,11 @@ class CityView extends StatelessWidget {
             children: [
               Text(
                 city.name,
-                style: AppTypography.headlineCity,
+                style: Theme.of(context).textTheme.headline1,
               ),
               Text(
                 weather.weather[0].main,
-                style: AppTypography.textRegular16,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),
