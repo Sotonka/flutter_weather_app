@@ -16,14 +16,13 @@ class WeatherForecastBloc
     on<WeatherForecastEventFetch>((event, emit) async {
       emit(const WeatherForecastState.loading());
       try {
-        WeatherData _weatherForecastLoaded = await weatherForecastRepository
+        final _weatherForecastLoaded = await weatherForecastRepository
             .getWeatherData(event.city, event.days)
             .timeout(const Duration(seconds: 5));
         emit(WeatherForecastState.loaded(
-            weatherForecastLoaded: _weatherForecastLoaded));
+            weatherForecastLoaded: _weatherForecastLoaded as WeatherData));
       } catch (_) {
         emit(const WeatherForecastState.error());
-        rethrow;
       }
     });
   }

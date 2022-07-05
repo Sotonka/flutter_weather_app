@@ -16,6 +16,8 @@ class _WeatherDataPageState extends State<WeatherDataPage> {
   @override
   void initState() {
     super.initState();
+    //context.read<WeatherForecastBloc>();
+    //.add(const WeatherForecastEvent.fetch(city: 'Khabarovsk', days: 7));
   }
 
   @override
@@ -39,7 +41,7 @@ class _WeatherDataPageState extends State<WeatherDataPage> {
             return weatherListView(weatherLoaded);
           }, error: () {
             return Center(
-              child: Text('Wrong City', style: AppTypography.hint),
+              child: Text('Error Fetching Data', style: AppTypography.hint),
             );
           }, initial: () {
             return Center(

@@ -51,8 +51,7 @@ class _CityScreenState extends State<CityScreen> {
               ),
               onPressed: () {
                 cityName ??= '';
-                Navigator.pop(
-                    context, {"cityName": cityName, "isFirstFetch": false});
+                Navigator.pop(context, {"cityName": cityName});
               },
             ),
           ],
