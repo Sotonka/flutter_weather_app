@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/bloc/weather_forecast_bloc.dart';
+import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
 import 'package:flutter_weather_app/bloc_observable.dart';
 import 'package:flutter_weather_app/data/repositories/weather_forecast_repository.dart';
 import 'package:flutter_weather_app/ui/pages/weather_screen.dart';
-import 'package:flutter_weather_app/utilities/theme_data.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -28,12 +27,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final repository = WeatherForecastRepository();
-    return BlocProvider(
-      create: (context) =>
-          WeatherForecastBloc(weatherForecastRepository: repository),
-      child: MaterialApp(
-        home: HomePage(),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) =>
+                  WeatherForecastBloc(weatherForecastRepository: repository))
+        ],
+        child: MaterialApp(
+          home: HomePage(),
+        ));
   }
 }

@@ -7,6 +7,7 @@ class WeatherForecastState with _$WeatherForecastState {
           {required WeatherData weatherForecastLoaded}) =
       WeatherForecastStateLoaded;
   const factory WeatherForecastState.error() = WeatherForecastStateError;
+  const factory WeatherForecastState.initial() = WeatherForecastStateInitial;
 
   factory WeatherForecastState.fromJson(Map<String, dynamic> json) =>
       _$WeatherForecastStateFromJson(json);

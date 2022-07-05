@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_weather_app/bloc/weather_forecast_bloc.dart';
-import 'package:flutter_weather_app/data/repositories/weather_forecast_repository.dart';
+import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
 import 'package:flutter_weather_app/ui/pages/city_page.dart';
 import 'package:flutter_weather_app/ui/pages/weather_data_page.dart';
-import 'package:flutter_weather_app/utilities/app_colors.dart';
+import 'package:flutter_weather_app/ui/theme/app_colors.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isFirstFetch = true;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -25,10 +25,10 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) {
                 return CityScreen();
               }));
-              if (tappedName != null) {
-                context
-                    .read<WeatherForecastBloc>()
-                    .add(WeatherForecastEvent.fetch(city: tappedName, days: 7));
+              if (tappedName['cityName'] != null) {
+                context.read<WeatherForecastBloc>().add(
+                    WeatherForecastEvent.fetch(
+                        city: tappedName['cityName'], days: 7));
               }
             },
             icon: const Icon(Icons.location_city),

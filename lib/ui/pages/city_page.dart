@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/ui/theme/app_colors.dart';
+import 'package:flutter_weather_app/ui/theme/text_styles.dart';
 
 class CityScreen extends StatefulWidget {
   const CityScreen({Key? key}) : super(key: key);
@@ -8,7 +10,7 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
-  late String cityName;
+  String? cityName = null;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _CityScreenState extends State<CityScreen> {
                   hintText: 'Enter City Name',
                   hintStyle: TextStyle(color: Colors.white),
                   filled: true,
-                  fillColor: Colors.black87,
+                  fillColor: AppColors.dark,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
@@ -33,23 +35,24 @@ class _CityScreenState extends State<CityScreen> {
                       borderSide: BorderSide.none),
                   icon: Icon(
                     Icons.location_city,
-                    color: Colors.black87,
+                    color: AppColors.dark,
                     size: 50.0,
                   ),
                 ),
                 onChanged: (value) {
-                  // ВОТ ТУТ ПРОВЕРКУ НА NULL
                   cityName = value;
                 },
               ),
             ),
             TextButton(
-              child: const Text(
+              child: Text(
                 'Get Weather',
-                style: TextStyle(fontSize: 30.0),
+                style: AppTypography.hint,
               ),
               onPressed: () {
-                Navigator.pop(context, cityName);
+                cityName ??= '';
+                Navigator.pop(
+                    context, {"cityName": cityName, "isFirstFetch": false});
               },
             ),
           ],

@@ -44,3 +44,15 @@ Map<String, dynamic> _$$WeatherForecastStateErrorToJson(
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
+
+_$WeatherForecastStateInitial _$$WeatherForecastStateInitialFromJson(
+        Map<String, dynamic> json) =>
+    _$WeatherForecastStateInitial(
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$WeatherForecastStateInitialToJson(
+        _$WeatherForecastStateInitial instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };

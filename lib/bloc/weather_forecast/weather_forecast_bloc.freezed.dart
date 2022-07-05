@@ -248,6 +248,8 @@ WeatherForecastState _$WeatherForecastStateFromJson(Map<String, dynamic> json) {
       return WeatherForecastStateLoaded.fromJson(json);
     case 'error':
       return WeatherForecastStateError.fromJson(json);
+    case 'initial':
+      return WeatherForecastStateInitial.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -265,6 +267,7 @@ mixin _$WeatherForecastState {
     required TResult Function() loading,
     required TResult Function(WeatherData weatherForecastLoaded) loaded,
     required TResult Function() error,
+    required TResult Function() initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -272,6 +275,7 @@ mixin _$WeatherForecastState {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -279,6 +283,7 @@ mixin _$WeatherForecastState {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -287,6 +292,7 @@ mixin _$WeatherForecastState {
     required TResult Function(WeatherForecastStateLoading value) loading,
     required TResult Function(WeatherForecastStateLoaded value) loaded,
     required TResult Function(WeatherForecastStateError value) error,
+    required TResult Function(WeatherForecastStateInitial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -294,6 +300,7 @@ mixin _$WeatherForecastState {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -301,6 +308,7 @@ mixin _$WeatherForecastState {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -380,6 +388,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     required TResult Function() loading,
     required TResult Function(WeatherData weatherForecastLoaded) loaded,
     required TResult Function() error,
+    required TResult Function() initial,
   }) {
     return loading();
   }
@@ -390,6 +399,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
   }) {
     return loading?.call();
   }
@@ -400,6 +410,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -414,6 +425,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     required TResult Function(WeatherForecastStateLoading value) loading,
     required TResult Function(WeatherForecastStateLoaded value) loaded,
     required TResult Function(WeatherForecastStateError value) error,
+    required TResult Function(WeatherForecastStateInitial value) initial,
   }) {
     return loading(this);
   }
@@ -424,6 +436,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
   }) {
     return loading?.call(this);
   }
@@ -434,6 +447,7 @@ class _$WeatherForecastStateLoading implements WeatherForecastStateLoading {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -546,6 +560,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     required TResult Function() loading,
     required TResult Function(WeatherData weatherForecastLoaded) loaded,
     required TResult Function() error,
+    required TResult Function() initial,
   }) {
     return loaded(weatherForecastLoaded);
   }
@@ -556,6 +571,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
   }) {
     return loaded?.call(weatherForecastLoaded);
   }
@@ -566,6 +582,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -580,6 +597,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     required TResult Function(WeatherForecastStateLoading value) loading,
     required TResult Function(WeatherForecastStateLoaded value) loaded,
     required TResult Function(WeatherForecastStateError value) error,
+    required TResult Function(WeatherForecastStateInitial value) initial,
   }) {
     return loaded(this);
   }
@@ -590,6 +608,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
   }) {
     return loaded?.call(this);
   }
@@ -600,6 +619,7 @@ class _$WeatherForecastStateLoaded implements WeatherForecastStateLoaded {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -683,6 +703,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     required TResult Function() loading,
     required TResult Function(WeatherData weatherForecastLoaded) loaded,
     required TResult Function() error,
+    required TResult Function() initial,
   }) {
     return error();
   }
@@ -693,6 +714,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
   }) {
     return error?.call();
   }
@@ -703,6 +725,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     TResult Function()? loading,
     TResult Function(WeatherData weatherForecastLoaded)? loaded,
     TResult Function()? error,
+    TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -717,6 +740,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     required TResult Function(WeatherForecastStateLoading value) loading,
     required TResult Function(WeatherForecastStateLoaded value) loaded,
     required TResult Function(WeatherForecastStateError value) error,
+    required TResult Function(WeatherForecastStateInitial value) initial,
   }) {
     return error(this);
   }
@@ -727,6 +751,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
   }) {
     return error?.call(this);
   }
@@ -737,6 +762,7 @@ class _$WeatherForecastStateError implements WeatherForecastStateError {
     TResult Function(WeatherForecastStateLoading value)? loading,
     TResult Function(WeatherForecastStateLoaded value)? loaded,
     TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -756,4 +782,141 @@ abstract class WeatherForecastStateError implements WeatherForecastState {
 
   factory WeatherForecastStateError.fromJson(Map<String, dynamic> json) =
       _$WeatherForecastStateError.fromJson;
+}
+
+/// @nodoc
+abstract class _$$WeatherForecastStateInitialCopyWith<$Res> {
+  factory _$$WeatherForecastStateInitialCopyWith(
+          _$WeatherForecastStateInitial value,
+          $Res Function(_$WeatherForecastStateInitial) then) =
+      __$$WeatherForecastStateInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WeatherForecastStateInitialCopyWithImpl<$Res>
+    extends _$WeatherForecastStateCopyWithImpl<$Res>
+    implements _$$WeatherForecastStateInitialCopyWith<$Res> {
+  __$$WeatherForecastStateInitialCopyWithImpl(
+      _$WeatherForecastStateInitial _value,
+      $Res Function(_$WeatherForecastStateInitial) _then)
+      : super(_value, (v) => _then(v as _$WeatherForecastStateInitial));
+
+  @override
+  _$WeatherForecastStateInitial get _value =>
+      super._value as _$WeatherForecastStateInitial;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$WeatherForecastStateInitial implements WeatherForecastStateInitial {
+  const _$WeatherForecastStateInitial({final String? $type})
+      : $type = $type ?? 'initial';
+
+  factory _$WeatherForecastStateInitial.fromJson(Map<String, dynamic> json) =>
+      _$$WeatherForecastStateInitialFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'WeatherForecastState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WeatherForecastStateInitial);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(WeatherData weatherForecastLoaded) loaded,
+    required TResult Function() error,
+    required TResult Function() initial,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(WeatherData weatherForecastLoaded)? loaded,
+    TResult Function()? error,
+    TResult Function()? initial,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(WeatherData weatherForecastLoaded)? loaded,
+    TResult Function()? error,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WeatherForecastStateLoading value) loading,
+    required TResult Function(WeatherForecastStateLoaded value) loaded,
+    required TResult Function(WeatherForecastStateError value) error,
+    required TResult Function(WeatherForecastStateInitial value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(WeatherForecastStateLoading value)? loading,
+    TResult Function(WeatherForecastStateLoaded value)? loaded,
+    TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WeatherForecastStateLoading value)? loading,
+    TResult Function(WeatherForecastStateLoaded value)? loaded,
+    TResult Function(WeatherForecastStateError value)? error,
+    TResult Function(WeatherForecastStateInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$WeatherForecastStateInitialToJson(this);
+  }
+}
+
+abstract class WeatherForecastStateInitial implements WeatherForecastState {
+  const factory WeatherForecastStateInitial() = _$WeatherForecastStateInitial;
+
+  factory WeatherForecastStateInitial.fromJson(Map<String, dynamic> json) =
+      _$WeatherForecastStateInitial.fromJson;
 }

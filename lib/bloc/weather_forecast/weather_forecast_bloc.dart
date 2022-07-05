@@ -12,7 +12,7 @@ class WeatherForecastBloc
     extends Bloc<WeatherForecastEvent, WeatherForecastState> {
   final WeatherForecastRepository weatherForecastRepository;
   WeatherForecastBloc({required this.weatherForecastRepository})
-      : super(const WeatherForecastState.loading()) {
+      : super(const WeatherForecastState.initial()) {
     on<WeatherForecastEventFetch>((event, emit) async {
       emit(const WeatherForecastState.loading());
       try {
