@@ -20,7 +20,7 @@ class WeatherForecastBloc
             .getWeatherData(event.city, event.days)
             .timeout(const Duration(seconds: 5));
         emit(WeatherForecastState.loaded(
-            weatherForecastLoaded: _weatherForecastLoaded as WeatherData));
+            weatherForecastLoaded: _weatherForecastLoaded));
       } catch (_) {
         emit(const WeatherForecastState.error());
       }

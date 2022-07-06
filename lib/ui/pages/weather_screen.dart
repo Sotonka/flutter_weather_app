@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/bloc/theme_bloc/theme_bloc.dart';
 import 'package:flutter_weather_app/bloc/weather_forecast/weather_forecast_bloc.dart';
+import 'package:flutter_weather_app/data/repositories/local_city_repository.dart';
 import 'package:flutter_weather_app/data/repositories/local_settings_repository.dart';
 import 'package:flutter_weather_app/ui/pages/city_page.dart';
 import 'package:flutter_weather_app/ui/pages/weather_data_page.dart';
@@ -50,18 +51,31 @@ class HomePage extends StatelessWidget {
                     }));
 
                     if (tappedName != null) {
+                      CityDatabaseService.putCitySettings(
+                          tappedName['cityName']);
+                      //CityDatabaseService.putCitySettings('');
+
                       context.read<WeatherForecastBloc>().add(
                           WeatherForecastEvent.fetch(
                               city: tappedName['cityName'], days: 7));
+                    } else {
+                      CityDatabaseService.putCitySettings(tappedName['']);
                     }
                   },
                   icon: const Icon(Icons.location_city),
                 ),
+                IconButton(
+                  onPressed: () {
+                    context.read<WeatherForecastBloc>().add(
+                        WeatherForecastEvent.fetch(
+                            city: CityDatabaseService.getCitySettings(),
+                            days: 7));
+                  },
+                  icon: const Icon(Icons.refresh),
+                ),
               ],
             ),
-            body: Container(
-              child: const WeatherDataPage(),
-            ),
+            body: const WeatherDataPage(),
           ),
         );
       }),

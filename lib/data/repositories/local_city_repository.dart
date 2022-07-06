@@ -1,7 +1,7 @@
 import 'dart:io';
+import 'package:flutter_weather_app/data/models/settings/city_settings.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_weather_app/data/models/settings/theme_settings.dart';
 
 class CityDatabaseService {
   CityDatabaseService._();
@@ -21,11 +21,11 @@ class CityDatabaseService {
   }
 
   static Future<void> createDatabase() async {
-    Directory themeDatabaseDir = await getApplicationSupportDirectory();
+    Directory cityDatabaseDir = await getApplicationSupportDirectory();
 
-    Hive.init(themeDatabaseDir.path);
+    Hive.init(cityDatabaseDir.path);
 
-    Hive.registerAdapter(ThemeDatabaseAdapter());
+    Hive.registerAdapter(CityDatabaseAdapter());
 
     cityBox = await Hive.openBox('cityBox');
 

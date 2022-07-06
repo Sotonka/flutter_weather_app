@@ -8,7 +8,7 @@ part of 'city_settings.dart';
 
 class CityDatabaseAdapter extends TypeAdapter<CityDatabase> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   CityDatabase read(BinaryReader reader) {

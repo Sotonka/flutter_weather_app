@@ -6,13 +6,4 @@ class ThemeState extends Equatable {
 
   @override
   List<Object?> get props => [themeData];
-} 
-
-/* @freezed
-class ThemeState with _$ThemeState {
-  const factory ThemeState.change({required ThemeData themeData}) =
-      ThemeStateChange;
-
-  factory ThemeState.fromJson(Map<String, dynamic> json) =>
-      _$ThemeStateFromJson(json);
-} */
+}

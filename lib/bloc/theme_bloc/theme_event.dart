@@ -10,11 +10,4 @@ class ThemeChanged extends ThemeEvent {
   ThemeChanged({required this.theme});
   @override
   List<Object?> get props => [theme];
-} 
-
-/* @freezed
-class ThemeEvent with _$ThemeEvent {
-  const factory ThemeEvent.change({
-    required AppTheme theme,
-  }) = ThemeEventChange;
-} */
+}
