@@ -3,7 +3,7 @@
 * bloc
 * hive
 * freezed
-* dio ![](img/img.gif)
+* dio
 
 ![](img/img.gif)
 
